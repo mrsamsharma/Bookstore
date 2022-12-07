@@ -17,7 +17,7 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 [Book Store] <a name="about-project"></a>
+# 📖 Book Store <a name="about-project"></a>
 
 > Just a Simple Bookstore
 
