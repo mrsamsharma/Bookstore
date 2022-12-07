@@ -1,7 +1,11 @@
-import React from "react";
+import React from 'react';
+import Header from '../components/Header';
 
 const Categories = () => (
-    <button>Check Status</button>
-)
+  <>
+    <Header />
+    <button type="button">Check Status</button>
+  </>
+);
 
 export default Categories;
