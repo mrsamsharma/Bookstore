@@ -4,13 +4,15 @@ import PropTypes from 'prop-types';
 import { deleteBook } from '../redux/books/books';
 
 const Book = (props) => {
-  const { id, title, author } = props;
+  /* eslint-disable */
+  const { item_id, title, author } = props;
+  /* eslint-enable */
   const dispatch = useDispatch();
   return (
     <div>
       <span>{title}</span>
       <span>{author}</span>
-      <button type="button" onClick={() => dispatch(deleteBook(id))}>Remove</button>
+      <button type="button" onClick={() => dispatch(deleteBook(item_id))}>Remove</button>
     </div>
   );
 };
@@ -18,7 +20,7 @@ const Book = (props) => {
 export default Book;
 
 Book.propTypes = {
-  id: PropTypes.string.isRequired,
+  item_id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
 };

@@ -12,12 +12,12 @@ export default function Books() {
 
   useEffect(() => {
     dispatch(fetchBooks());
-  });
+  }, []);
   return (
     <>
       <Header />
       {books.map((book) => (
-        <Book key={book.id} id={book.id} title={book.title} author={book.author} />
+        <Book key={book.item_id} item_id={book.item_id} title={book.title} author={book.author} />
       ))}
       <AddBook />
     </>

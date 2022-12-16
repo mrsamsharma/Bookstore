@@ -10,12 +10,12 @@ const initialState = [];
 export const fetchBooks = () => async (dispatch) => {
   const res = await axios.get(url);
   const books = [];
-  Object.keys(res.data).map((key) => books.push({ id: key, ...res.data[key][0] }));
+  Object.keys(res.data).map((key) => books.push({ item_id: key, ...res.data[key][0] }));
   dispatch(getBooks(books));
 };
 
 export const postBook = (payload) => (dispatch) => {
-  dispatch(addBook(payload));
+  axios.post(url, payload).then(() => dispatch(addBook(payload)));
 };
 
 export const deleteBook = (id) => (dispatch) => {
@@ -29,7 +29,7 @@ const changeBooks = (state = initialState, action) => {
     case 'GET':
       return action.payload;
     case 'REMOVE':
-      return state.filter((book) => book.id !== action.id);
+      return state.filter((book) => book.item_id !== action.id);
     default:
       return state;
   }
