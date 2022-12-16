@@ -19,7 +19,8 @@ const AddBook = () => {
 
   const dispatch = useDispatch();
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     dispatch(postBook({ ...formData, id: uuid() }));
     setFormData({
       title: '',
@@ -28,17 +29,10 @@ const AddBook = () => {
   };
 
   return (
-    <form>
-      <input value={title} placeholder="Title" type="text" name="title" onChange={handleChange} />
-      <input value={author} placeholder="Author" type="text" name="author" onChange={handleChange} />
-      <input
-        type="submit"
-        value="Add New"
-        onClick={(e) => {
-          e.preventDefault();
-          handleSubmit();
-        }}
-      />
+    <form onSubmit={(e) => handleSubmit(e)}>
+      <input value={title} placeholder="Title" type="text" name="title" onChange={handleChange} required />
+      <input value={author} placeholder="Author" type="text" name="author" onChange={handleChange} required />
+      <input type="submit" value="Add New" />
     </form>
   );
 };
