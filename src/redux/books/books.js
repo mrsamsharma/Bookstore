@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 const addBook = (payload) => ({ type: 'ADD', payload });
 const removeBook = (id) => ({ type: 'REMOVE', id });
@@ -19,7 +19,7 @@ export const postBook = (payload) => (dispatch) => {
 };
 
 export const deleteBook = (id) => (dispatch) => {
-  dispatch(removeBook(id));
+  axios.delete(`${url}/${id}`).then(() => dispatch(removeBook(id)));
 };
 
 const changeBooks = (state = initialState, action) => {
