@@ -19,8 +19,8 @@ export default function Books() {
         <div className="books_wrapper">
           {books.map((book) => (
             <Book
-              key={book.id}
-              id={book.id}
+              key={book.item_id}
+              item_id={book.item_id}
               title={book.title}
               author={book.author}
             />
