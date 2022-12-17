@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const addBook = (payload) => ({ type: 'ADD', payload });
 const removeBook = (id) => ({ type: 'REMOVE', id });
@@ -7,20 +8,34 @@ const url = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstor
 
 const initialState = [];
 
-export const fetchBooks = () => async (dispatch) => {
-  const res = await axios.get(url);
-  const books = [];
-  Object.keys(res.data).map((key) => books.push({ item_id: key, ...res.data[key][0] }));
-  dispatch(getBooks(books));
-};
+export const fetchBooks = createAsyncThunk(
+  'books/fetchBooks',
+  async (_, { dispatch }) => {
+    const res = await axios.get(url);
+    const books = [];
+    Object.keys(res.data).map((key) => books.push({ item_id: key, ...res.data[key][0] }));
+    dispatch(getBooks(books));
+  },
+);
 
-export const postBook = (payload) => (dispatch) => {
-  axios.post(url, payload).then(() => dispatch(addBook(payload)));
-};
+export const postBook = createAsyncThunk(
+  'books/postBook',
+  async (payload, { dispatch }) => {
+    await axios.post(url, payload);
+    dispatch(addBook(payload));
+  },
+);
 
-export const deleteBook = (id) => (dispatch) => {
-  axios.delete(`${url}/${id}`).then(() => dispatch(removeBook(id)));
-};
+export const deleteBook = createAsyncThunk(
+  'books/deleteBook',
+  async (id, { dispatch }) => {
+    await axios.delete(`${url}/${id}`,
+      {
+        item_id: id,
+      });
+    dispatch(removeBook(id));
+  },
+);
 
 const changeBooks = (state = initialState, action) => {
   switch (action.type) {
