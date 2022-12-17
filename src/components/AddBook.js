@@ -7,6 +7,7 @@ const AddBook = () => {
   const [formData, setFormData] = useState({
     title: '',
     author: '',
+    category: '',
   });
   const { title, author } = formData;
 
@@ -21,10 +22,11 @@ const AddBook = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(postBook({ ...formData, id: uuid() }));
+    dispatch(postBook({ ...formData, item_id: uuid() }));
     setFormData({
       title: '',
       author: '',
+      category: '',
     });
   };
 
