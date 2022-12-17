@@ -9,8 +9,10 @@ const Categories = () => {
   return (
     <>
       <Header />
-      <button type="button" onClick={() => dispatch(status())}>Check Status</button>
-      <p>{categories}</p>
+      <section className="home">
+        <button type="button" className="button" onClick={() => dispatch(status())}>Check Status</button>
+        <p>{categories}</p>
+      </section>
     </>
   );
 };

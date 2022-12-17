@@ -4,7 +4,6 @@ import Header from '../components/Header';
 import Book from '../components/Book';
 import AddBook from '../components/AddBook';
 import { fetchBooks } from '../redux/books/books';
-import '../styles.css';
 
 export default function Books() {
   const books = useSelector((state) => state.books);
@@ -16,10 +15,19 @@ export default function Books() {
   return (
     <>
       <Header />
-      {books.map((book) => (
-        <Book key={book.item_id} item_id={book.item_id} title={book.title} author={book.author} />
-      ))}
-      <AddBook />
+      <section className="home">
+        <div className="books_wrapper">
+          {books.map((book) => (
+            <Book
+              key={book.item_id}
+              item_id={book.item_id}
+              title={book.title}
+              author={book.author}
+            />
+          ))}
+        </div>
+        <AddBook />
+      </section>
     </>
   );
 }
