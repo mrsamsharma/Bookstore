@@ -31,11 +31,14 @@ const AddBook = () => {
   };
 
   return (
-    <form onSubmit={(e) => handleSubmit(e)}>
-      <input value={title} placeholder="Title" type="text" name="title" onChange={handleChange} required />
-      <input value={author} placeholder="Author" type="text" name="author" onChange={handleChange} required />
-      <input type="submit" value="Add New" />
-    </form>
+    <section>
+      <h2>ADD NEW BOOK</h2>
+      <form onSubmit={(e) => handleSubmit(e)}>
+        <input value={title} placeholder="Title" type="text" name="title" onChange={handleChange} required />
+        <input value={author} placeholder="Author" type="text" name="author" onChange={handleChange} required />
+        <input type="submit" value="Add New" />
+      </form>
+    </section>
   );
 };
 

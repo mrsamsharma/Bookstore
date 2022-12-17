@@ -1,16 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import styles from './Header.module.css';
 
 const Header = () => (
-  <header>
-    <nav>
-      <ul>
-        <li><Link to="/">BookStore CMS</Link></li>
-        <li><Link to="/">Books</Link></li>
-        <li><Link to="/category">Categories</Link></li>
+    <nav className={styles.navcontainer}>
+      <NavLink className={styles.navlogo} to="/">BookStore CMS</NavLink>
+      <ul className={styles.navlinks}>
+        <li><NavLink className={styles.navlink} activeStyle={{ background: 'red', color: 'white' }} to="/">Books</NavLink></li>
+        <li><NavLink className={styles.navlink} to="/category">Categories</NavLink></li>
       </ul>
     </nav>
-  </header>
-);
+  );
 
 export default Header;
