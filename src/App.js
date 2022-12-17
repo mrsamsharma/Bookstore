@@ -2,6 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Books from './pages/Books';
 import Categories from './pages/Categories';
+import './App.scss';
 
 function App() {
   return (
